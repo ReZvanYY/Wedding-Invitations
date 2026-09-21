@@ -144,7 +144,7 @@ export default function HomePage() {
             </div>
 
             <div className="col-start-1 row-start-1 w-full h-full flex items-end justify-end pointer-events-none z-30 overflow-visible">
-              <img src="../assets/image-border-2.png" alt="" className="opacity-95 drop-shadow-2xl object-contain origin-center sm:w-full md:w-full lg:w-[60%] xl:w-full translate-x-[25%] translate-y-[25%] -rotate-12 transform-gpu" aria-hidden="true" />
+              <img src="https://i.imghippo.com/files/XAP8766kj.png" alt="" className="opacity-95 drop-shadow-2xl object-contain origin-center sm:w-full md:w-full lg:w-[60%] xl:w-full translate-x-[25%] translate-y-[25%] -rotate-12 transform-gpu" aria-hidden="true" />
             </div>
           </div>
         </div>

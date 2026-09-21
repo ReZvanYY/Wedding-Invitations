@@ -1,16 +1,17 @@
-// This is the HomePage component that serves as the landing page for the wedding invitation website. It displays the couple's names, wedding date, location, and provides navigation options based on the user's authentication status and role (admin or guest). The component also checks if the user has already replied to the invitation and adjusts the call-to-action buttons accordingly.
+// This is the HomePage component that serves as the landing page for the wedding invitation website. It displays the main hero section with the couple's names, date, location, and a call-to-action button that changes based on the user's authentication status and whether they have replied to the invitation. It also includes a section with information cards about the ceremony, dinner & party, location, wishlist, accommodation, and toastmaster.
 import { useState, useEffect } from 'react';
 import { useAuth } from '../Auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
+// The HomePage component renders the main landing page for the wedding invitation website. It displays the couple's names, date, location, and a call-to-action button that changes based on the user's authentication status and whether they have replied to the invitation. It also includes a section with information cards about the ceremony, dinner & party, location, wishlist, accommodation, and toastmaster.
 export default function HomePage() {
-  const { user, token } = useAuth(); // Get the authenticated user and token from the AuthContext
+  const { user, token } = useAuth();
   const navigate = useNavigate();
   const [hasReplied, setHasReplied] = useState(false);
 
-  // Check if the user is authenticated and has replied
+  // Check if the user is authenticated and has replied to the invitation. If the user is authenticated and not the admin (user ID 3), fetch their reply status from the backend.
   useEffect(() => {
-    // Check to ensure the user is authenticated and not the admin (user ID 3)
+    // Check to ensure the user is authenticated and not the admin (user ID 3) before fetching their reply status.
     if (user && user.id !== 3 && token) {
       const checkReplyStatus = async () => {
         try {
@@ -150,10 +151,13 @@ export default function HomePage() {
       </section>
 
       {/* Bottom Information Cards Section */}
-      <section className="w-full max-w-360 px-6 pb-24 z-30">
-        <div className="bg-[#f6e6ff] backdrop-blur-md rounded-4 p-6 md:p-8 shadow-sm border border-purple-100 flex flex-col md:flex-row justify-between divide-y md:divide-y-0 md:divide-x divide-purple-200">
+      <section className="w-full max-w-[120rem] px-6 pb-24 z-30">
+        
+        {/* Changed to a grid layout to gracefully handle 6 cards */}
+        <div className="bg-[#f6e6ff] backdrop-blur-md rounded-4 p-6 md:p-10 shadow-sm border border-purple-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8">
           
-          <div className="flex-1 flex flex-col items-center text-center p-4 md:p-8">
+          {/* Ceremony Card */}
+          <div className="flex flex-col items-center text-center">
             <svg className="w-10 h-10 text-[#42275a] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12a4 4 0 100-8 4 4 0 000 8zM16 12a4 4 0 100-8 4 4 0 000 8z"></path>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 10h12"></path>
@@ -165,7 +169,8 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="flex-1 flex flex-col items-center text-center p-4 md:p-8">
+          {/* Dinner & Party Card */}
+          <div className="flex flex-col items-center text-center">
             <svg className="w-10 h-10 text-[#42275a] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM3 16.811c0 .864.933 1.405 1.683.977l7.108-4.062a1.125 1.125 0 000-1.953L4.683 7.71A1.125 1.125 0 003 8.688v8.123z"></path>
             </svg>
@@ -175,30 +180,65 @@ export default function HomePage() {
             <p className="text-[1.25rem] text-gray-600 leading-relaxed">Kleskode: Pent, sommerlig, fargerikt. Vi ber om forståelse for at bryllupsfesten er barnefri.</p>
           </div>
 
-          <div className="flex-1 flex flex-col items-center text-center p-4 md:p-8">
+          {/* Location Card */}
+          <div className="flex flex-col items-center text-center">
             <svg className="w-10 h-10 text-[#42275a] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
             <h3 className="text-xl font-bold tracking-[0.15rem] uppercase mb-2">Sted</h3>
             <p className="text-[1.25rem] text-gray-600 leading-relaxed">Bryllupsfesten holdes på Nordre Bjøre selskapslokaler på Noresund</p>
-            <p className="font-bold text-[1.25rem]">Adresse:</p>
+            <p className="font-bold text-[1.25rem] mt-2">Adresse:</p>
             <p className="font-bold text-[1.25rem]">Vestsideveien 1344, 3536 Noresund.</p>
           </div>
 
-          <div className="flex-1 flex flex-col items-center text-center p-4 md:p-8">
+          {/* Wishlist Card */}
+          <div className="flex flex-col items-center text-center">
             <svg className="w-10 h-10 text-[#42275a] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
             </svg>
             <h3 className="text-xl font-bold tracking-[0.15rem] uppercase mb-2">Ønskeliste</h3>
-            <div>
-              <p className="text-[1.25rem] text-gray-600 leading-relaxed">
-                Vi ønsker oss pengegaver som skal gå til bryllupsreise. I tillegg har vi opprettet en ønskeliste på Kitchn:{" "}
-                <a href="https://www.kitchn.no/onskeliste/261012/" target="_blank" rel="noopener noreferrer" className="text-[#c4a235] hover:underline">
-                  Kitchn Ønskeliste
-                </a>
-              </p>
-            </div>
+            <p className="text-[1.25rem] text-gray-600 leading-relaxed">
+              Vi ønsker oss pengegaver som skal gå til bryllupsreise. I tillegg har vi opprettet en ønskeliste på Kitchn:
+            </p>
+            <a href="https://www.kitchn.no/onskeliste/261012/" target="_blank" rel="noopener noreferrer" className="text-[#c4a235] font-bold text-[1.25rem] hover:underline mt-2">
+              Se Kitchn Ønskeliste her
+            </a>
+          </div>
+
+          {/* Accommodation (Overnatting) Card */}
+          <div className="flex flex-col items-center text-center">
+            <svg className="w-10 h-10 text-[#42275a] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            <h3 className="text-xl font-bold tracking-[0.15rem] uppercase mb-2">Overnatting</h3>
+            <p className="text-[1.25rem] text-gray-600 leading-relaxed">
+              Det er holdt av rom på Sole Gjestegård på Noresund. De som ønsker rom tar selv kontakt med dem for å reservere (fortell at du er gjest i bryllupet til Bjørklund/Eriksen).
+            </p>
+            <p className="text-[1.25rem] text-gray-600 leading-relaxed mt-4">
+              <strong>Pris per døgn:</strong><br />
+              Dobbeltrom/Twinrom (2 voksne): kr 1680,-<br />
+              Enkeltrom: kr 1190,-<br />
+              <em>(Begge inkl. frokost)</em>
+            </p>
+            <p className="text-[1.25rem] text-gray-600 leading-relaxed mt-4">
+              Ved spørsmål utover dette, ta kontakt med Kjell Arne Bjørklund.
+            </p>
+          </div>
+
+          {/* Toastmaster Card */}
+          <div className="flex flex-col items-center text-center">
+            <svg className="w-10 h-10 text-[#42275a] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            </svg>
+            <h3 className="text-xl font-bold tracking-[0.15rem] uppercase mb-2">Toastmaster</h3>
+            <p className="text-[1.25rem] text-gray-600 leading-relaxed">
+              Kveldens toastmaster er <strong>Marit Bråthen</strong>. Det er hun som holder styr på taler og andre innslag i løpet av kvelden.
+            </p>
+            <p className="text-[1.25rem] text-gray-600 leading-relaxed mt-4">
+              Hun kan kontaktes på telefon:<br />
+              <strong className="text-xl text-[#4a3b52]">950 06 756</strong>
+            </p>
           </div>
 
         </div>

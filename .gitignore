@@ -1,0 +1,13 @@
+# Pakker og avhengigheter
+node_modules/
+
+# Hemmelige passord og miljøvariabler
+.env
+
+# Bygg-mapper fra Vite
+dist/
+dist-ssr/
+
+# Systemfiler (Windows og Mac)
+Thumbs.db
+.DS_Store

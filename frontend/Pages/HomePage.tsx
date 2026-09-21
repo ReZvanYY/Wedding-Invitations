@@ -140,7 +140,7 @@ export default function HomePage() {
             </div>
 
             <div className="col-start-1 row-start-1 w-full h-full rounded-t-full rounded-b-4 overflow-hidden bg-[#ecdcf5] shadow-xl flex z-10">
-              <img src="../assets/ThomasMartine.png" alt="Thomas og Martine" className="w-full h-full object-cover object-center" />
+              <img src="https://i.imghippo.com/files/eDpk3384xHw.png" alt="Thomas og Martine" className="w-full h-full object-cover object-center" />
             </div>
 
             <div className="col-start-1 row-start-1 w-full h-full flex items-end justify-end pointer-events-none z-30 overflow-visible">

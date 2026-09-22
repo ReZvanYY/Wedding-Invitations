@@ -132,7 +132,7 @@ export default function HomePage() {
         <div className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2">
           <div className="grid grid-cols-1 grid-rows-1 place-items-center w-full min-w-[16rem] max-w-[20rem] sm:max-w-[24rem] lg:max-w-md xl:max-w-136 aspect-2/3">
             <div className="col-start-1 row-start-1 w-[110%] h-[105%] border-10 border-[#ffd75470] rounded-t-full rounded-b-4 opacity-60 flex justify-center items-start z-0">
-              <div className="bg-transparent px-2 -mt-2 text-[#fac107] -mt-5 flex items-center justify-center">
+              <div className="bg-transparent px-2 text-[#fac107] -mt-5 flex items-center justify-center">
                 <svg className="w-7.5 h-7.5 flex" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                 </svg>
